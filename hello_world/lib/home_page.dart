@@ -14,35 +14,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final languages = ["Python", "Go", "TypeScript", "C++"];
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-        ),
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                for(var i = 0; i < 10; i++)
-                  Container(
-                    width: double.infinity,
-                    height: 80,
-                    margin: const EdgeInsets.all(8),
-                    color: Colors.red,
-                  ),
-              ],
-            ),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            setState(() {
-              counter++;
-            });
+      appBar: AppBar(
+        title: Text('Curso de Flutter'),
+      ),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: ListView.builder(
+          itemCount: languages.length,
+          itemBuilder: (context, index) {
+            final lang = languages[index];
+            return ListTile(
+              title: Text(lang),
+            );
           },
         ),
+      ),
     );
   }
 }
