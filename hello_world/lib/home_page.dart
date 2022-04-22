@@ -10,29 +10,47 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  var counter = 0;
+  final controller = TextEditingController();
+  final list = <String>[];
 
   @override
   Widget build(BuildContext context) {
-
-    final languages = ["Python", "Go", "TypeScript", "C++"];
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Curso de Flutter'),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: ListView.builder(
-          itemCount: languages.length,
-          itemBuilder: (context, index) {
-            final lang = languages[index];
-            return ListTile(
-              title: Text(lang),
-            );
-          },
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(child: TextField(controller: controller,)),
+                IconButton(
+                  onPressed: () {
+                    final text = controller.text;
+                    setState(() {
+                      list.add(text);
+                    });
+                    controller.clear();
+                  }, 
+                  icon: const Icon(Icons.add)
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                final item = list[index];
+                return ListTile(
+                  title: Text(item),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }
