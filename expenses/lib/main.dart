@@ -49,16 +49,16 @@ class MyHomePage extends StatelessWidget {
           ),
           Column(
             children: _transactions.map((tr) {
-              return Container(
+              return Card(
                 child: Row(
                   children: [
                     Container(
-                      child: Text("${tr.value}")
+                      child: Text(tr.value.toString())
                     ),
                     Column(
                       children: [
                         Text(tr.title),
-                        Text("${tr.date}")
+                        Text(tr.date.toString())
                       ],
                     )
                   ]
