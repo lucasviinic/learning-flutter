@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
 
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +49,20 @@ class MyHomePage extends StatelessWidget {
           ),
           Column(
             children: _transactions.map((tr) {
-              return Card(
-                child: Text(tr.title),
+              return Container(
+                child: Row(
+                  children: [
+                    Container(
+                      child: Text("${tr.value}")
+                    ),
+                    Column(
+                      children: [
+                        Text(tr.title),
+                        Text("${tr.date}")
+                      ],
+                    )
+                  ]
+                ),
               );
             }).toList(),
           )
