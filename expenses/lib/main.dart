@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
@@ -96,6 +96,36 @@ class MyHomePage extends StatelessWidget {
                 ),
               );
             }).toList(),
+          ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Título"
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Valor (R\$)"
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FlatButton(
+                        child: Text("Nova Transação"),
+                        textColor: Colors.purple,
+                        onPressed: () {},
+                      ),
+                    ],
+                  )
+                ]
+              ),
+            ),
           )
         ]
       ),
